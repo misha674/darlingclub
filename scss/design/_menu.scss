@@ -1,0 +1,235 @@
+nav {
+    .menu {
+        .open-menu {
+            display: none;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.11);
+            border: 1px solid #FFFFFF;
+            box-sizing: border-box;
+            border-radius: 100px;
+            padding: 13px 11%;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 12px;
+            span {
+                display: flex;
+                width: 16px;
+                height: 2px;
+                background: #fff;
+                position: relative;
+                opacity: 1;
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    display: flex;
+                    width: 16px;
+                    height: 2px;
+                    background: #fff;
+                }
+
+                &::before {
+                    top: 4px;
+                }
+
+                &::after {
+                    bottom: 4px;
+                }
+            }
+            @include mq(md) {
+                display: flex;
+            }
+        }
+
+        ul {
+            display: flex;
+
+            li {
+                margin-right: 56px;
+
+                a {
+                    font-size: 19px;
+                    line-height: 26px;
+                    letter-spacing: 1%;
+                }
+            }
+
+            @include mq(md) {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                right: 100%;
+                width: 100%;
+                height: 100%;
+                flex-direction: column;
+                justify-content: center;
+                padding-left: 20%;
+                background: rgba(0, 0, 0, 0.28);
+                backdrop-filter: blur(50px);
+
+                li {
+                    a {
+                        font-size: 64px;
+                        line-height: 70px;
+                        font-weight: 700;
+                        margin-bottom: 30px;
+                        text-transform: uppercase;
+                        font-family: $montserrat;
+                        padding: 10px;
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+
+    .contact-block {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 150px;
+        border-right: 1px solid #fff;
+
+
+        .contacts {
+            flex-direction: column;
+
+        }
+
+        .block-up {
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+
+            .text {
+                display: block;
+                position: relative;
+                transform: rotate(90deg);
+                margin-top: 50%;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    right: -100%;
+                    top: 50%;
+                    display: flex;
+                    height: 1px;
+                    width: 80px;
+                    padding-left: 30px;
+                    background: #fff;
+                }
+            }
+
+        }
+
+        @include mq(md) {
+            position: relative;
+            flex-direction: row;
+            border: none;
+            .block-up {
+                display: none;
+            }
+            align-items: center;
+
+            .contacts {
+                flex-direction: row;
+                min-height: auto;
+                .contact {
+                    height: 44px;
+                    width: 44px;
+                    margin-top: 0;
+                    margin-right: 20px;
+                    &.tel {
+                        svg {
+                            width: 15px;
+                            height: 15px;
+                        }
+                    }
+            
+                    &.whatsapp {
+                        svg {
+                            width: 15px;
+                            height: 15px;
+                        }
+                    }
+            
+                    &.viber {
+                        svg {
+                            width: 15px;
+                            height: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .social-network {
+        display: flex;
+        justify-content: flex-end;
+
+        a {
+            display: block;
+            width: 30px;
+            height: 30px;
+            padding: 5px;
+
+            svg {
+                width: 100%;
+                height: 100%;
+
+                path {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+}
+
+.contacts {
+    display: flex;
+    align-items: center;
+
+    .contact {
+        width: 75px;
+        height: 75px;
+        display: flex;
+        border-radius: 100px;
+        border: 1px solid #fff;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            path {
+                fill: #fff;
+            }
+        }
+
+        &.tel {
+            svg {
+                width: 23px;
+                height: 28px;
+            }
+        }
+
+        &.whatsapp {
+            svg {
+                width: 29px;
+                height: 29px;
+            }
+        }
+
+        &.viber {
+            svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    }
+}
