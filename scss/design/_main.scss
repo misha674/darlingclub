@@ -1,6 +1,7 @@
 main {
     overflow: hidden;
     margin-top: -46px;
+
     .main {
         &-top {
             display: flex;
@@ -8,7 +9,7 @@ main {
             position: relative;
             margin-bottom: -300px;
             padding-top: 100px;
-            padding-bottom: 300px;
+            padding-bottom: 150px;
 
             &::before {
                 content: "";
@@ -32,12 +33,15 @@ main {
                     display: flex;
                     align-items: center;
                     font-size: 34px;
+
                     span {
                         margin: 0 8px;
                     }
+
                     .slider-count {
                         opacity: 0.6;
                     }
+
                     .slick-arrow {
                         position: relative;
                         left: auto;
@@ -54,15 +58,19 @@ main {
                         opacity: 0.6;
                         transition: all .5s;
                         margin: 0 17px;
+
                         &.active {
                             opacity: 1;
                         }
+
                         &.slick-prev {
                             transform: rotate(90deg);
                         }
+
                         &.slick-next {
                             transform: rotate(-90deg);
                         }
+
                         &::before,
                         &::after {
                             content: "";
@@ -73,14 +81,17 @@ main {
                             opacity: 1;
                             position: absolute;
                         }
+
                         &::before {
                             transform: rotate(-45deg);
                             right: 17px;
                         }
+
                         &::after {
                             transform: rotate(45deg);
                             left: 17px;
                         }
+
                         &:hover {
                             opacity: 1;
                         }
@@ -92,15 +103,18 @@ main {
 
         &-bottom {
             position: relative;
+            padding-top: 150px;
 
             h3 {
-                margin-bottom: 105px;
+                margin-bottom: 86px;
             }
 
             .bg-text {
                 left: 26%;
+                top: 130px;
             }
         }
+
     }
 
     .slider-block {
@@ -112,17 +126,38 @@ main {
             margin: 0 10px;
             border-radius: 15px;
             overflow: hidden;
+
+            img {
+                width: 100%;
+            }
         }
     }
 
     .block-info {
         position: relative;
-        padding-bottom: 380px;
+        margin-bottom: 190px;
+
+        &_img {
+            width: 60vw;
+            max-width: 1400px;
+            position: absolute;
+            max-height: 100%;
+            z-index: 0;
+
+            picture {
+                width: 100%;
+                display: flex;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
 
         &_desc {
-            position: absolute;
+            position: relative;
             width: 100%;
-            top: 17%;
+            padding-top: 12%;
             display: flex;
             justify-content: flex-end;
 
@@ -132,15 +167,160 @@ main {
             }
 
             .desc {
-                width: 60%;
+                width: 58%;
                 background: $violetBg;
-                padding: 116px 100px 56px;
+                padding: 116px 100px 76px;
 
                 p {
-                    margin-bottom: 60px;
+                    margin-bottom: 40px;
                     font-size: 24px;
                     line-height: 48px;
                 }
+            }
+        }
+    }
+
+    @include mq(xl) {
+        .block-info {
+            &_desc {
+                padding-top: 14%;
+
+                .desc {
+                    width: 80%;
+                    padding: 85px 107px 45px;
+
+                    p {
+                        font-size: 20px;
+                        line-height: 42px;
+                    }
+                }
+            }
+        }
+    }
+
+
+    @include mq(md) {
+        .main {
+            &-top {
+                margin-left: 15px;
+                margin-right: 15px;
+                padding-right: 5%;
+                padding-left: 5%;
+
+                &::before {
+                    width: 100%;
+                }
+
+                .slider-control {
+                    justify-content: flex-end;
+
+                    .arrow-wrapper {
+                        display: none;
+                    }
+                }
+            }
+
+            &-bottom {
+                h3 {
+                    margin-bottom: 105px;
+                }
+
+                .bg-text {
+                    font-size: 200px;
+                }
+            }
+        }
+
+        .slider-block {
+            padding-left: 8%;
+            padding-bottom: 83px;
+        }
+
+        .block-info {
+            padding-left: 20px;
+            padding-right: 20px;
+
+            &_img {
+                width: 78%;
+            }
+
+            &_desc {
+                padding-top: 180px;
+
+                .desc {
+                    width: 84%;
+                    min-width: auto;
+
+                    p {
+                        font-size: 18px;
+                        line-height: 36px;
+                    }
+                }
+            }
+        }
+    }
+
+    @include mq(sm) {
+        .block-info {
+            padding-left: 0;
+            padding-right: 0;
+            margin-bottom: 0;
+
+            &_img {
+                position: relative;
+                width: 100%;
+            }
+
+            &_desc {
+                padding-top: 0;
+
+                .container {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+
+                .desc {
+                    width: 100%;
+                    padding: 34px 20px 0 20px;
+                }
+            }
+        }
+    }
+
+    @include mq(xs) {
+        margin-top: 0;
+
+        .main {
+            &-top {
+                margin-left: 0;
+                margin-right: 0;
+                padding-top: 52px;
+                padding-right: 5px;
+                padding-left: 5px;
+
+                .slider-control {
+                    justify-content: flex-start;
+
+                    .numer {
+                        font-size: 18px;
+                    }
+                }
+
+            }
+
+            &-bottom {
+                .bg-text {
+                    display: none;
+                }
+            }
+        }
+
+        .slider-block {
+            padding-left: 20px;
+
+            .slide-img {
+                width: 367px;
+                height: 332px;
             }
         }
     }

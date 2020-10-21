@@ -12,13 +12,18 @@ nav {
             text-transform: uppercase;
             letter-spacing: 5px;
             font-size: 12px;
-            span {
+
+
+            .close {
                 display: flex;
                 width: 16px;
                 height: 2px;
                 background: #fff;
                 position: relative;
                 opacity: 1;
+                transition: all 1s;
+
+
                 &::before,
                 &::after {
                     content: '';
@@ -27,6 +32,7 @@ nav {
                     width: 16px;
                     height: 2px;
                     background: #fff;
+                    transition: all 1s;
                 }
 
                 &::before {
@@ -37,8 +43,11 @@ nav {
                     bottom: 4px;
                 }
             }
+
             @include mq(md) {
                 display: flex;
+                z-index: 101;
+                position: relative;
             }
         }
 
@@ -55,7 +64,15 @@ nav {
                 }
             }
 
-            @include mq(md) {
+            .menu-footer_contacts {
+                display: none;
+            }
+        }
+    }
+
+    @include mq(md) {
+        .menu {
+            ul {
                 position: fixed;
                 top: 0;
                 left: -100%;
@@ -63,17 +80,29 @@ nav {
                 width: 100%;
                 height: 100%;
                 flex-direction: column;
-                justify-content: center;
-                padding-left: 20%;
+                // justify-content: center;
+                padding-left: 150px;
                 background: rgba(0, 0, 0, 0.28);
                 backdrop-filter: blur(50px);
+                z-index: 100;
+                overflow: auto;
+
+                &::before {
+                    content: '';
+                    display: flex;
+                    background: transparent;
+                    width: 100%;
+                    height: 150px;
+                }
 
                 li {
+                    margin-right: 0;
+
                     a {
                         font-size: 64px;
                         line-height: 70px;
                         font-weight: 700;
-                        margin-bottom: 30px;
+                        margin-bottom: 3%;
                         text-transform: uppercase;
                         font-family: $montserrat;
                         padding: 10px;
@@ -81,9 +110,146 @@ nav {
                     }
                 }
             }
+
+            &.noActive {
+                .open-menu {
+                    .close {
+                        background: #fff;
+
+                        &::after {
+                            transform: rotate(0deg);
+                        }
+
+                        &::before {
+                            transform: rotate(0deg);
+                        }
+                    }
+                }
+
+                ul {
+                    animation: hide 1.5s ease forwards;
+                }
+            }
+
+            &.active {
+                .open-menu {
+                    .close {
+                        background: transparent;
+
+                        &::after {
+                            transform: rotate(135deg);
+                            bottom: 0;
+                        }
+
+                        &::before {
+                            transform: rotate(-135deg);
+                            top: 0;
+                        }
+                    }
+                }
+
+                ul {
+                    animation: show 1.5s ease forwards;
+                }
+
+            }
         }
     }
 
+
+    @include mq(xs) {
+        .menu {       
+            ul {
+                padding-bottom: 100px;
+                padding-left: 0;
+
+                li {
+                    a {
+                        font-size: 36px;
+                        line-height: 40px;
+                        padding: 10px 15px;
+                    }
+                }
+
+                .menu-footer_contacts {
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    height: 80px;
+
+                    .row {
+                        justify-content: space-between;
+                    }
+
+                    .contact-block {
+                        display: flex;
+
+                        .contacts {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            .contact {
+                                height: 47px;
+                                width: 47px;
+                                margin: 0 3%;
+                            }
+                        }
+                    }
+
+                    .social-network {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                    }
+                }
+            }
+            &.noActive {
+                ul {
+                    animation: hide .75s ease forwards;
+                }
+            }
+            &.active {
+                
+                ul {
+                    animation: show .75s ease forwards;
+                }
+            }
+            .close {
+                transition: all .5s;
+                &::before,
+                &::after {
+                    transition: all .5s;
+                }
+            }
+        }
+    }
+    @keyframes hide {
+        0% {
+            left: 0;
+            right: 0;
+        }
+
+        100% {
+            left: -100%;
+            right: 100%;
+        }
+        
+    }
+
+    
+    @keyframes show {
+        0% {
+            left: -100%;
+            right: 100%;
+        }
+
+        100% {
+            left: 0;
+            right: 0;
+        }
+    }
     .contact-block {
         position: fixed;
         display: flex;
@@ -132,33 +298,37 @@ nav {
             position: relative;
             flex-direction: row;
             border: none;
+
             .block-up {
                 display: none;
             }
+
             align-items: center;
 
             .contacts {
                 flex-direction: row;
                 min-height: auto;
+
                 .contact {
                     height: 44px;
                     width: 44px;
                     margin-top: 0;
                     margin-right: 20px;
+
                     &.tel {
                         svg {
                             width: 15px;
                             height: 15px;
                         }
                     }
-            
+
                     &.whatsapp {
                         svg {
                             width: 15px;
                             height: 15px;
                         }
                     }
-            
+
                     &.viber {
                         svg {
                             width: 15px;
@@ -179,6 +349,7 @@ nav {
             width: 30px;
             height: 30px;
             padding: 5px;
+            border-radius: 100px;
 
             svg {
                 width: 100%;
@@ -188,6 +359,31 @@ nav {
                     fill: #fff;
                 }
             }
+            &:hover {
+                background: #fff;
+                svg {
+                    path {
+                        fill: #060625;
+                    }
+                }
+            }
+        }
+    }
+
+    @include mq(xs) {
+        .contact-block {
+            display: none;
+        }
+
+        .menu {
+            .open-menu {
+                justify-content: space-between;
+                padding: 13px 25px;
+            }
+        }
+
+        .social-network {
+            display: none;
         }
     }
 }
@@ -208,6 +404,14 @@ nav {
         svg {
             path {
                 fill: #fff;
+            }
+        }
+        &:hover {
+            background: #fff;
+            svg {
+                path {
+                    fill: #060625;
+                }
             }
         }
 

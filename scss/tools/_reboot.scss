@@ -30,6 +30,8 @@ a {
     text-decoration: none !important;
     cursor: pointer;  
     transition: all .4s;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
 }
 
 ul,

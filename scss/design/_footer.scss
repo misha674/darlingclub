@@ -5,25 +5,30 @@ footer {
     padding-top: 630px;
     margin-top: -630px;
     background: linear-gradient(180deg, #26094A 0%, #060625 100%, rgba(6, 6, 37, 0) 100%);
+
     .bg-text {
         top: 585px;
         left: 40%;
-        line-height: 74%;     
+        line-height: 74%;
     }
+
     .footer-contacts {
         margin-bottom: 173px;
+
         h3 {
             margin-bottom: 30px;
         }
+
+        // .row {
+        //     // justify-content: space-between;
+        // }
+
         .contacts-block {
             display: flex;
             flex-direction: column;
-            .contacts {
-                .contact {
-                    margin-right: 35px;
-                }
-            }
+
         }
+
         .address {
             .tel {
                 font-size: 36px;
@@ -31,25 +36,119 @@ footer {
                 margin-bottom: 9px;
                 display: block;
             }
+
             .addr {
                 font-size: 24px;
                 line-height: 29px;
                 margin-left: 30px;
             }
         }
+
         .btn-block {
             display: flex;
             justify-content: flex-end;
+
             .btn {
                 max-width: 100%;
                 width: 100%;
                 padding: 27px 89px;
             }
         }
+
+        .contacts {
+            display: flex;
+            justify-content: space-between;
+        }
     }
+
     .policy-privacy {
         padding: 40px 0;
         border-top: 1px solid rgba(255, 255, 255, .09);
         opacity: 0.5;
+    }
+
+    .marg-1 {
+        display: none;
+    }
+
+    @include mq(lg) {
+        .footer-contacts {
+
+            .contacts-block {
+                order: 1;
+            }
+
+            .address {
+                order: 2;
+                margin-bottom: 40px;
+
+                .addr {
+                    font-size: 20px;
+                }
+            }
+
+            .contacts {
+                order: 3;
+            }
+
+            .marg-1 {
+                display: block;
+                order: 4;
+            }
+
+            .btn-block {
+                order: 5;
+            }
+        }
+    }
+
+    @include mq(md) {
+        .footer {
+            padding-top: 630px;
+        }
+
+    }
+
+    @include mq(sm) {
+        margin-top: 0;
+
+        .footer {
+            width: 90%;
+            margin: auto;
+            padding-top: 0;
+            margin-top: 60px;
+            text-align: center;
+
+            .bg-text {
+                display: none;
+            }
+
+            h3 {
+                &::before {
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+
+            .address {
+                .tel {
+                    font-size: 24px;
+                    line-height: 29px;
+                    margin-bottom: 18px;
+                }
+
+                .addr {
+                    font-size: 18px;
+                    line-height: 21px;
+                    margin: auto;
+                    margin-bottom: 18px;
+                    width: 90%;
+                }
+            }
+
+            .contacts {
+                margin-bottom: 40px;
+            }
+        }
     }
 }

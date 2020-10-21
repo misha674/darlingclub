@@ -18,6 +18,7 @@ header,
 main,
 footer {
     padding-left: 150px;
+
     @include mq(md) {
         padding: 0;
     }
@@ -39,7 +40,18 @@ a.btn {
     width: max-content;
     height: max-content;
     padding: 27px 91px;
+    white-space: nowrap;
+    &:hover {
+        box-shadow: 0px 27px 56px rgba(255, 199, 0, 0.9);
+border-radius: 1e+08px;
+    }
 }
+
+a {
+    transition: all .4s;
+    cursor: pointer;
+}
+
 h1 {
     font-size: 96px;
     line-height: 105px;
@@ -47,7 +59,8 @@ h1 {
     font-family: $montserrat;
     text-transform: uppercase;
     margin-bottom: 20px;
-} 
+    width: min-content;
+}
 
 h3 {
     font-size: 34px;
@@ -69,6 +82,7 @@ h3 {
         background: $buttonColor;
     }
 }
+
 .bg-text {
     font-size: 288px;
     text-transform: uppercase;
@@ -78,23 +92,46 @@ h3 {
     width: max-content;
     z-index: -1;
     font-family: $montserrat;
-    background: linear-gradient(90deg, rgba(255, 255,255, .2) 0%, rgba(255, 255,255, .1) 25%, transparent 50%, transparent 75%, transparent 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, .2) 0%, rgba(255, 255, 255, .1) 25%, transparent 50%, transparent 75%, transparent 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 @include mq(md) {
     h1 {
         font-size: 64px;
         line-height: 70px;
     }
-    h3 {
-        font-size: 25px;
-        line-height: 38px;
-    }
+
     a.btn {
         font-size: 14px;
         line-height: 20px;
         padding: 22px 83px;
 
+    }
+}
+
+@include mq(sm) {
+    h1 {
+        font-size: 48px;
+        line-height: 54px;
+    }
+
+    h3 {
+        font-size: 30px;
+        line-height: 43px;
+    }
+
+}
+
+@include mq(xs) {
+    h1 {
+        font-size: 48px;
+        line-height: 54px;
+    }
+
+    h3 {
+        font-size: 24px;
+        line-height: 43px;
     }
 }
