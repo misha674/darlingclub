@@ -4,7 +4,7 @@ $(document).ready(function () {
   //  SCRIPT FOR SLIDER 
 
   $(".slider-block").on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-    var number = $('.slider-number'),
+    let number = $('.slider-number'),
       count = $('.slider-count'),
       i = (currentSlide ? currentSlide : 0) + 1;
     l = slick.slideCount;
@@ -24,11 +24,11 @@ $(document).ready(function () {
     arrows: true,
     appendArrows: $('.arrow-wrapper'),
     speed: 1000,
-    // speed: 6000,
+    speed: 6000,
     slidesToShow: 1,
     variableWidth: true,
-    // autoplay: true,
-    // autoplaySpeed: 100
+    autoplay: true,
+    autoplaySpeed: 100
   });
 
   //  END SCRIPT FOR SLIDER 
@@ -86,7 +86,7 @@ $(document).ready(function () {
 
   const anchors = document.querySelectorAll('a[href*="#"');
 
-  for (var anchor of anchors) {
+  for (let anchor of anchors) {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
 
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
   //  SCRIPT FOR SHOW/HIDE HEAD MENU
 
-  var menuOpenLink = document.querySelector('.open-menu'),
+  let menuOpenLink = document.querySelector('.open-menu'),
     menuOpenLinkText = menuOpenLink.querySelector('.text'),
     headerMenu = document.getElementById('head-menu'),
     menuLinks = headerMenu.querySelectorAll('.menu-links a'),
@@ -124,9 +124,7 @@ $(document).ready(function () {
     }
   });
 
-  function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-  [].concat(_toConsumableArray(menuLinks)).forEach(function (link) {
+  [...menuLinks].forEach(link => {
     link.addEventListener('click', function () {
       headerMenu.classList.add('noActive');
       headerMenu.classList.remove('active');
